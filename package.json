@@ -1,12 +1,11 @@
 {
-  "name": "aph-template",
+  "name": "aphgames-template",
   "author": "put your name here",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev": "node scripts/prebuild-project && parcel view/index.html --out-dir build_project",
-    "deploy": "node scripts/prebuild-project && parcel build view/index.html --out-dir build_project --public-url PUBLICURL --no-cache --no-source-maps && node scripts/fix-links.js",
-    "lint": "eslint ./src ./libs --ext .js,.jsx,.ts,.tsx"
+    "dev": "node scripts/prebuild-project && parcel view/index.html --out-dir build",
+    "deploy": "node scripts/prebuild-project && parcel build view/index.html --out-dir build --public-url PUBLICURL --no-cache --no-source-maps && node scripts/fix-links.js"
   },
   "dependencies": {
     "matter-js": "^0.17.1",

@@ -1,4 +1,4 @@
 const utils = require("./utils");
-utils.deleteFolderRecursive("build_project", true);
+utils.deleteFolderRecursive("build", true);
 
-utils.copyFolderRecursiveSync("assets/", "build_project/assets");
+utils.copyFolderRecursiveSync("assets/", "build/assets");

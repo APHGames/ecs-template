@@ -5,3 +5,6 @@
 - execute `npm install`
 - execute `npm run dev`
 - go to `localhost:1234` and find your template there
+
+## Deployment
+- run `npm run deploy` and find your project in the `build` folder

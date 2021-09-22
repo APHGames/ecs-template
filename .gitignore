@@ -1,21 +1,13 @@
 # Dependencies
 /node_modules
-wiki/node_modules/
 
 # Production
-/build_wiki
-/build_slides
-/build_examples
-/build_project
+/build
 
 # Generated files
-.docusaurus
 .cache-loader
 .cache/
 .parcel-cache/
-slides/assets/generated/
-snippets_generated
-
 
 # Misc
 .DS_Store
@@ -28,7 +20,4 @@ npm-debug.log*
 
 /.idea/
 .log
-src/css/infima.css
 .ignore
-wiki/static/slides/
-wiki/static/examples/
