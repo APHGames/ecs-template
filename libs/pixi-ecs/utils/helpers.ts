@@ -15,7 +15,9 @@ export const resizeContainer = (container: HTMLElement, virtualWidth: number, vi
 
 	// On some mobile devices '100vh' is taller than the visible
 	// viewport which leads to part of the presentation being
-	let hideAddressBar = () => setTimeout(() => { window.scrollTo(0, 1); }, 10);
+	let hideAddressBar = () => setTimeout(() => {
+		window.scrollTo(0, 1);
+	}, 10);
 
 	if (isMobileDevice()) {
 		document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');

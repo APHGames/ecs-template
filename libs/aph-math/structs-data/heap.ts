@@ -58,7 +58,7 @@ export default class Heap<T> {
 	 * or greater than the second.
 	 */
 	constructor(compareFunction?: collections.ICompareFunction<T>) {
-		this.compare = compareFunction || collections.defaultCompare;
+	    this.compare = compareFunction || collections.defaultCompare;
 	}
 
 	/**
@@ -68,11 +68,11 @@ export default class Heap<T> {
 	 */
 	peek(): T | undefined {
 
-		if (this.data.length > 0) {
-			return this.data[0];
-		} else {
-			return undefined;
-		}
+	    if (this.data.length > 0) {
+	        return this.data[0];
+	    } else {
+	        return undefined;
+	    }
 	}
 
 	/**
@@ -81,12 +81,12 @@ export default class Heap<T> {
 	 * @return true if the element was added or fals if it is undefined.
 	 */
 	add(element: T): boolean {
-		if (collections.isUndefined(element)) {
-			return false;
-		}
-		this.data.push(element);
-		this.siftUp(this.data.length - 1);
-		return true;
+	    if (collections.isUndefined(element)) {
+	        return false;
+	    }
+	    this.data.push(element);
+	    this.siftUp(this.data.length - 1);
+	    return true;
 	}
 
 	/**
@@ -95,16 +95,16 @@ export default class Heap<T> {
 	 * undefined if the heap is empty.
 	 */
 	removeRoot(): T | undefined {
-		if (this.data.length > 0) {
-			const obj = this.data[0];
-			this.data[0] = this.data[this.data.length - 1];
-			this.data.splice(this.data.length - 1, 1);
-			if (this.data.length > 0) {
-				this.siftDown(0);
-			}
-			return obj;
-		}
-		return undefined;
+	    if (this.data.length > 0) {
+	        const obj = this.data[0];
+	        this.data[0] = this.data[this.data.length - 1];
+	        this.data.splice(this.data.length - 1, 1);
+	        if (this.data.length > 0) {
+	            this.siftDown(0);
+	        }
+	        return obj;
+	    }
+	    return undefined;
 	}
 	/**
 	 * Returns true if this heap contains the specified element.
@@ -113,15 +113,15 @@ export default class Heap<T> {
 	 * otherwise.
 	 */
 	contains(element: T): boolean {
-		const equF = collections.compareToEquals(this.compare);
-		return arrays.contains(this.data, element, equF);
+	    const equF = collections.compareToEquals(this.compare);
+	    return arrays.contains(this.data, element, equF);
 	}
 	/**
 	 * Returns the number of elements in this heap.
 	 * @return {number} the number of elements in this heap.
 	 */
 	size(): number {
-		return this.data.length;
+	    return this.data.length;
 	}
 	/**
 	 * Checks if this heap is empty.
@@ -129,13 +129,13 @@ export default class Heap<T> {
 	 * otherwise.
 	 */
 	isEmpty(): boolean {
-		return this.data.length <= 0;
+	    return this.data.length <= 0;
 	}
 	/**
 	 * Removes all of the elements from this heap.
 	 */
 	clear(): void {
-		this.data.length = 0;
+	    this.data.length = 0;
 	}
 
 	/**
@@ -146,7 +146,7 @@ export default class Heap<T> {
 	 * optionally return false.
 	 */
 	forEach(callback: collections.ILoopFunction<T>) {
-		arrays.forEach(this.data, callback);
+	    arrays.forEach(this.data, callback);
 	}
 
 	/**
@@ -157,7 +157,7 @@ export default class Heap<T> {
 	 * @private
 	 */
 	private leftChildIndex(nodeIndex: number): number {
-		return (2 * nodeIndex) + 1;
+	    return (2 * nodeIndex) + 1;
 	}
 	/**
 	 * Returns the index of the right child of the node at the given index.
@@ -167,7 +167,7 @@ export default class Heap<T> {
 	 * @private
 	 */
 	private rightChildIndex(nodeIndex: number): number {
-		return (2 * nodeIndex) + 2;
+	    return (2 * nodeIndex) + 2;
 	}
 	/**
 	 * Returns the index of the parent of the node at the given index.
@@ -176,7 +176,7 @@ export default class Heap<T> {
 	 * @private
 	 */
 	private parentIndex(nodeIndex: number): number {
-		return Math.floor((nodeIndex - 1) / 2);
+	    return Math.floor((nodeIndex - 1) / 2);
 	}
 	/**
 	 * Returns the index of the smaller child node (if it exists).
@@ -188,19 +188,19 @@ export default class Heap<T> {
 	 */
 	private minIndex(leftChild: number, rightChild: number): number {
 
-		if (rightChild >= this.data.length) {
-			if (leftChild >= this.data.length) {
-				return -1;
-			} else {
-				return leftChild;
-			}
-		} else {
-			if (this.compare(this.data[leftChild], this.data[rightChild]) <= 0) {
-				return leftChild;
-			} else {
-				return rightChild;
-			}
-		}
+	    if (rightChild >= this.data.length) {
+	        if (leftChild >= this.data.length) {
+	            return -1;
+	        } else {
+	            return leftChild;
+	        }
+	    } else {
+	        if (this.compare(this.data[leftChild], this.data[rightChild]) <= 0) {
+	            return leftChild;
+	        } else {
+	            return rightChild;
+	        }
+	    }
 	}
 	/**
 	 * Moves the node at the given index up to its proper place in the heap.
@@ -209,12 +209,12 @@ export default class Heap<T> {
 	 */
 	private siftUp(index: number): void {
 
-		let parent = this.parentIndex(index);
-		while (index > 0 && this.compare(this.data[parent], this.data[index]) > 0) {
-			arrays.swap(this.data, parent, index);
-			index = parent;
-			parent = this.parentIndex(index);
-		}
+	    let parent = this.parentIndex(index);
+	    while (index > 0 && this.compare(this.data[parent], this.data[index]) > 0) {
+	        arrays.swap(this.data, parent, index);
+	        index = parent;
+	        parent = this.parentIndex(index);
+	    }
 	}
 	/**
 	 * Moves the node at the given index down to its proper place in the heap.
@@ -223,16 +223,16 @@ export default class Heap<T> {
 	 */
 	private siftDown(nodeIndex: number): void {
 
-		//smaller child index
-		let min = this.minIndex(this.leftChildIndex(nodeIndex),
-			this.rightChildIndex(nodeIndex));
+	    //smaller child index
+	    let min = this.minIndex(this.leftChildIndex(nodeIndex),
+	        this.rightChildIndex(nodeIndex));
 
-		while (min >= 0 && this.compare(this.data[nodeIndex],
-			this.data[min]) > 0) {
-			arrays.swap(this.data, min, nodeIndex);
-			nodeIndex = min;
-			min = this.minIndex(this.leftChildIndex(nodeIndex),
-				this.rightChildIndex(nodeIndex));
-		}
+	    while (min >= 0 && this.compare(this.data[nodeIndex],
+	        this.data[min]) > 0) {
+	        arrays.swap(this.data, min, nodeIndex);
+	        nodeIndex = min;
+	        min = this.minIndex(this.leftChildIndex(nodeIndex),
+	            this.rightChildIndex(nodeIndex));
+	    }
 	}
 }

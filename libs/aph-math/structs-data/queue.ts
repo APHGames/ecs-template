@@ -18,7 +18,7 @@ export default class Queue<T> {
 	 * @constructor
 	 */
 	constructor() {
-		this.list = new LinkedList<T>();
+	    this.list = new LinkedList<T>();
 	}
 
 
@@ -28,7 +28,7 @@ export default class Queue<T> {
 	 * @return {boolean} true if the element was inserted, or false if it is undefined.
 	 */
 	enqueue(elem: T): boolean {
-		return this.list.add(elem);
+	    return this.list.add(elem);
 	}
 	/**
 	 * Inserts the specified element into the end of this queue.
@@ -36,19 +36,19 @@ export default class Queue<T> {
 	 * @return {boolean} true if the element was inserted, or false if it is undefined.
 	 */
 	add(elem: T): boolean {
-		return this.list.add(elem);
+	    return this.list.add(elem);
 	}
 	/**
 	 * Retrieves and removes the head of this queue.
 	 * @return {*} the head of this queue, or undefined if this queue is empty.
 	 */
 	dequeue(): T | undefined {
-		if (this.list.size() !== 0) {
-			const el = this.list.first();
-			this.list.removeElementAtIndex(0);
-			return el;
-		}
-		return undefined;
+	    if (this.list.size() !== 0) {
+	        const el = this.list.first();
+	        this.list.removeElementAtIndex(0);
+	        return el;
+	    }
+	    return undefined;
 	}
 	/**
 	 * Retrieves, but does not remove, the head of this queue.
@@ -56,10 +56,10 @@ export default class Queue<T> {
 	 */
 	peek(): T | undefined {
 
-		if (this.list.size() !== 0) {
-			return this.list.first();
-		}
-		return undefined;
+	    if (this.list.size() !== 0) {
+	        return this.list.first();
+	    }
+	    return undefined;
 	}
 
 	/**
@@ -67,7 +67,7 @@ export default class Queue<T> {
 	 * @return {number} the number of elements in this queue.
 	 */
 	size(): number {
-		return this.list.size();
+	    return this.list.size();
 	}
 
 	/**
@@ -89,7 +89,7 @@ export default class Queue<T> {
 	 * false otherwise.
 	 */
 	contains(elem: T, equalsFunction?: util.IEqualsFunction<T>): boolean {
-		return this.list.contains(elem, equalsFunction);
+	    return this.list.contains(elem, equalsFunction);
 	}
 
 	/**
@@ -98,14 +98,14 @@ export default class Queue<T> {
 	 * otherwise.
 	 */
 	isEmpty(): boolean {
-		return this.list.size() <= 0;
+	    return this.list.size() <= 0;
 	}
 
 	/**
 	 * Removes all of the elements from this queue.
 	 */
 	clear(): void {
-		this.list.clear();
+	    this.list.clear();
 	}
 
 	/**
@@ -116,7 +116,7 @@ export default class Queue<T> {
 	 * optionally return false.
 	 */
 	forEach(callback: util.ILoopFunction<T>) {
-		this.list.forEach(callback);
+	    this.list.forEach(callback);
 	}
 
 }

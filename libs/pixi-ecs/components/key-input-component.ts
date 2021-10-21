@@ -51,18 +51,18 @@ export class KeyInputComponent extends Component<void> {
 
 
 	constructor() {
-		super();
-		this._name = KeyInputComponent.name;
+	    super();
+	    this._name = KeyInputComponent.name;
 	}
 
 	onAttach() {
-		document.addEventListener('keyup', this.onKeyUp, false);
-		document.addEventListener('keydown', this.onKeyDown, false);
+	    document.addEventListener('keyup', this.onKeyUp, false);
+	    document.addEventListener('keydown', this.onKeyDown, false);
 	}
 
 	onDetach() {
-		document.removeEventListener('keyup', this.onKeyUp);
-		document.removeEventListener('keydown', this.onKeyDown);
+	    document.removeEventListener('keyup', this.onKeyUp);
+	    document.removeEventListener('keydown', this.onKeyDown);
 	}
 
 	/**
@@ -71,33 +71,33 @@ export class KeyInputComponent extends Component<void> {
 	 * @param includeHandled if true, it will check for already handled keys as well
 	 */
 	isKeyPressed(keyCode: number, includeHandled = false) {
-		return this.keys.has(keyCode) || (includeHandled && this.handledKeys.has(keyCode));
+	    return this.keys.has(keyCode) || (includeHandled && this.handledKeys.has(keyCode));
 	}
 
 	/**
 	 * Marks given key as handled
 	 */
 	handleKey(keyCode: number) {
-		this.keys.delete(keyCode);
-		this.handledKeys.add(keyCode);
+	    this.keys.delete(keyCode);
+	    this.handledKeys.add(keyCode);
 	}
 
 	protected pressKey(code: number) {
-		if (!this.handledKeys.has(code)) {
-			this.keys.add(code);
-		}
+	    if (!this.handledKeys.has(code)) {
+	        this.keys.add(code);
+	    }
 	}
 
 	protected releaseKey(code: number) {
-		this.handledKeys.delete(code);
-		this.keys.delete(code);
+	    this.handledKeys.delete(code);
+	    this.keys.delete(code);
 	}
 
 	private onKeyDown = (evt: KeyboardEvent) => {
-		this.pressKey(evt.keyCode);
+	    this.pressKey(evt.keyCode);
 	}
 
 	private onKeyUp = (evt: KeyboardEvent) => {
-		this.releaseKey(evt.keyCode);
+	    this.releaseKey(evt.keyCode);
 	}
 }

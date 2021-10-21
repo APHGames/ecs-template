@@ -8,11 +8,11 @@ import * as Steering from './steering';
 import * as Interpolation from './interpolation';
 
 export {
-  Random,
-  Steering,
-  Interpolation,
-  QuadTree, QuadTreeItem, PerlinNoise,
-  PathContext, PathSegment, Path,
-  PathFinderContext, PathFinder, BreadthFirstSearch, Dijkstra, AStarSearch,
-  GridMap, MAP_TYPE_TILE, MAP_TYPE_OCTILE
+	Random,
+	Steering,
+	Interpolation,
+	QuadTree, QuadTreeItem, PerlinNoise,
+	PathContext, PathSegment, Path,
+	PathFinderContext, PathFinder, BreadthFirstSearch, Dijkstra, AStarSearch,
+	GridMap, MAP_TYPE_TILE, MAP_TYPE_OCTILE
 };

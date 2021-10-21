@@ -19,12 +19,32 @@ class Pair<A, B> {
 	first: A;
 	second: B;
 	constructor(first: A, second: B) {
-		this.first = first;
-		this.second = second;
+	    this.first = first;
+	    this.second = second;
 	}
 }
 
 export abstract class PathFinder {
+
+	protected calcPathFromSteps(start: Vector, goal: Vector, steps: Map<number, Vector>, mapWidth: number): Array<Vector> {
+	    let current = goal;
+	    let output = new Array<Vector>();
+	    output.push(current);
+	    while (!current.equals(start)) {
+	        current = steps.get(this.indexMapper(current, mapWidth));
+	        output.push(current);
+	    }
+	    // reverse path so the starting position will be at the first place
+	    output = output.reverse();
+	    return output;
+	}
+
+	/**
+	 * Transforms vector to a unique number, must know the width of the map
+	 */
+	protected indexMapper = (vec: Vector, mapWidth: number) => {
+	    return vec.y * mapWidth + vec.x;
+	}
 
 	/**
 	 * Tries to find a path from start to goal
@@ -35,26 +55,6 @@ export abstract class PathFinder {
 	 * @return true if the path has been found
 	 */
 	abstract search(grid: GridMap, start: Vector, goal: Vector, outputCtx: PathFinderContext): boolean;
-
-	protected calcPathFromSteps(start: Vector, goal: Vector, steps: Map<number, Vector>, mapWidth: number): Array<Vector> {
-		let current = goal;
-		let output = new Array<Vector>();
-		output.push(current);
-		while (!current.equals(start)) {
-			current = steps.get(this.indexMapper(current, mapWidth));
-			output.push(current);
-		}
-		// reverse path so the starting position will be at the first place
-		output = output.reverse();
-		return output;
-	}
-
-	/**
-	 * Transforms vector to a unique number, must know the width of the map
-	 */
-	protected indexMapper = (vec: Vector, mapWidth: number) => {
-		return vec.y * mapWidth + vec.x;
-	}
 }
 
 export class BreadthFirstSearch extends PathFinder {

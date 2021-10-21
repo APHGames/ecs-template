@@ -21,7 +21,7 @@ import * as PIXI from 'pixi.js';
 /**
  * Interface for PIXI objects attached to the component architecture
  */
-export default interface GameObject {
+interface GameObject {
 	// unique identifier
 	id: number;
 	// name of the object
@@ -177,3 +177,5 @@ export default interface GameObject {
 	 */
 	destroyChildren(): void;
 }
+
+export default GameObject;

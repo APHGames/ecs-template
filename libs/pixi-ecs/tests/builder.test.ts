@@ -2,6 +2,7 @@ import { FuncComponent } from '..';
 import Builder from '../engine/builder';
 import { addTest } from './test-collector';
 import { WIDTH, HEIGHT } from './test-runner';
+import * as PIXI from 'pixi.js';
 
 addTest('BuilderTest', (scene, onFinish) => {
 	let builder = new Builder(scene);

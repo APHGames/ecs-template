@@ -28,13 +28,27 @@ class MyGame {
 
 		this.engine.app.loader
 			.reset()
-			//.add(myFile, 'myFileUrl') load your assets here
+			.add('ghost', 'assets/ghost.png') // load your assets here
 			.load(() => this.onAssetsLoaded());
 	}
 
 	onAssetsLoaded() {
 		// init the scene and run your game
 		let scene = this.engine.scene;
+
+		// a little hack that generates a loop with 100 runs
+		Array(100).fill(0, 0, 100).forEach(() => {
+			new ECS.Builder(scene)
+				// random position anywhere in the scene
+				.localPos(Math.random() * this.engine.app.screen.width, Math.random() * this.engine.app.screen.height)
+				.anchor(0.5)
+				.scale(0.15)
+				.withParent(scene.stage)
+				.withComponent(new ECS.FuncComponent('rotation').doOnUpdate((cmp, delta, absolute) => cmp.owner.rotation += 0.001 * delta))
+				.asSprite(PIXI.Texture.from('ghost'))
+				.build();
+		});
+
 		new ECS.Builder(scene)
 			.localPos(this.engine.app.screen.width / 2, this.engine.app.screen.height / 2)
 			.anchor(0.5)

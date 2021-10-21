@@ -51,8 +51,8 @@ addTest('Component lifecycle test', (scene, onFinish, tick) => {
 	const expectedSequence = ['init', 'attach', 'update', 'fixed', 'finish', 'detach', 'remove', 'init', 'attach',
 		'update', 'fixed', 'detach', 'attach', 'update', 'fixed', 'finish', 'detach', 'remove'];
 	const expectedSequenceStates = [ComponentState.NEW, ComponentState.INITIALIZED, ComponentState.RUNNING, ComponentState.RUNNING, ComponentState.RUNNING,
-	ComponentState.FINISHED, ComponentState.DETACHED, ComponentState.REMOVED, ComponentState.INITIALIZED, ComponentState.RUNNING, ComponentState.RUNNING,
-	ComponentState.RUNNING, ComponentState.DETACHED, ComponentState.RUNNING, ComponentState.RUNNING, ComponentState.RUNNING, ComponentState.FINISHED, ComponentState.DETACHED];
+		ComponentState.FINISHED, ComponentState.DETACHED, ComponentState.REMOVED, ComponentState.INITIALIZED, ComponentState.RUNNING, ComponentState.RUNNING,
+		ComponentState.RUNNING, ComponentState.DETACHED, ComponentState.RUNNING, ComponentState.RUNNING, ComponentState.RUNNING, ComponentState.FINISHED, ComponentState.DETACHED];
 
 	const sequenceEqual = expectedSequence.filter((val, index) => sequence[index] !== val).length === 0;
 	const sequenceStateEqual = expectedSequenceStates.filter((val, index) => sequenceStates[index] !== val).length === 0;
@@ -178,16 +178,16 @@ addTest('FinishWithoutRemovalTest', (scene, onFinish) => {
 		scene.sendMessage(new Message('MSG_TEST'));
 		scene.callWithDelay(1000, () => {
 			// re-add the component to the scene
-			gfx.addComponent(component);  
-			
+			gfx.addComponent(component);
+
 			scene.callWithDelay(1000, () => { // init++ attach++
 				gfx.detach(); // detach++
 
 				// shouldn't accept messages
 				scene.sendMessage(new Message('MSG_TEST'));
-				scene.stage.addChild(gfx); // attach++ 
-	
-				let success = initToken === 2 && attachToken === 3 && messageToken === 1 && detachToken === 2 && finishToken === 1 && updateToken === 2 && removeToken == 1;
+				scene.stage.addChild(gfx); // attach++
+
+				let success = initToken === 2 && attachToken === 3 && messageToken === 1 && detachToken === 2 && finishToken === 1 && updateToken === 2 && removeToken === 1;
 				if (success) {
 					onFinish(true);
 				} else {
@@ -360,13 +360,13 @@ addTest('Components removed upon destroy', (scene, onFinish, tick) => {
 addTest('All components updated when adding a new one', (scene, onFinish, tick) => {
 	const updates = [];
 	const components = [new FuncComponent('A').doOnUpdate(() => updates.push('A')),
-	new FuncComponent('B').doOnUpdate(() => updates.push('B')),
-	new FuncComponent('C').doOnUpdate((cmp) => {  // insert a new component in the middle of the loop
-		updates.push('C');
-		cmp.owner.addComponentAndRun(new FuncComponent('F').doOnUpdate(() => updates.push('F')));
-	}),
-	new FuncComponent('D').doOnUpdate(() => updates.push('D')),
-	new FuncComponent('E').doOnUpdate(() => updates.push('E'))];
+		new FuncComponent('B').doOnUpdate(() => updates.push('B')),
+		new FuncComponent('C').doOnUpdate((cmp) => {  // insert a new component in the middle of the loop
+			updates.push('C');
+			cmp.owner.addComponentAndRun(new FuncComponent('F').doOnUpdate(() => updates.push('F')));
+		}),
+		new FuncComponent('D').doOnUpdate(() => updates.push('D')),
+		new FuncComponent('E').doOnUpdate(() => updates.push('E'))];
 	let builder = new Builder(scene);
 	builder.asContainer().withComponents(components);
 	builder.withParent(scene.stage).build();
@@ -381,13 +381,13 @@ addTest('All components updated when adding a new one', (scene, onFinish, tick) 
 addTest('All components updated when removing an old one', (scene, onFinish, tick) => {
 	const updates = [];
 	const components = [new FuncComponent('A').doOnUpdate(() => updates.push('A')),
-	new FuncComponent('B').doOnUpdate(() => updates.push('B')),
-	new FuncComponent('C').doOnUpdate((cmp) => {
-		updates.push('C');
-		cmp.finish();
-	}),
-	new FuncComponent('D').doOnUpdate(() => updates.push('D')),
-	new FuncComponent('E').doOnUpdate(() => updates.push('E'))];
+		new FuncComponent('B').doOnUpdate(() => updates.push('B')),
+		new FuncComponent('C').doOnUpdate((cmp) => {
+			updates.push('C');
+			cmp.finish();
+		}),
+		new FuncComponent('D').doOnUpdate(() => updates.push('D')),
+		new FuncComponent('E').doOnUpdate(() => updates.push('E'))];
 	let builder = new Builder(scene);
 	builder.asContainer().withComponents(components);
 	builder.withParent(scene.stage).build();

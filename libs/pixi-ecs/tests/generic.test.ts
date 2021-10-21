@@ -2,6 +2,7 @@ import { Graphics, FuncComponent } from '..';
 import ChainComponent from '../components/chain-component';
 import Builder from '../engine/builder';
 import { addTest } from './test-collector';
+import * as PIXI from 'pixi.js';
 
 addTest('RotationTest', (scene, onFinish) => {
 	let gfx = new Graphics('');

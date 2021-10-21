@@ -29,7 +29,7 @@ export default class PriorityQueue<T> {
 	 * or greater than the second.
 	 */
 	constructor(compareFunction?: util.ICompareFunction<T>) {
-		this.heap = new Heap<T>(util.reverseCompareFunction(compareFunction));
+	    this.heap = new Heap<T>(util.reverseCompareFunction(compareFunction));
 	}
 
 	/**
@@ -38,7 +38,7 @@ export default class PriorityQueue<T> {
 	 * @return {boolean} true if the element was inserted, or false if it is undefined.
 	 */
 	enqueue(element: T): boolean {
-		return this.heap.add(element);
+	    return this.heap.add(element);
 	}
 
 	/**
@@ -47,7 +47,7 @@ export default class PriorityQueue<T> {
 	 * @return {boolean} true if the element was inserted, or false if it is undefined.
 	 */
 	add(element: T): boolean {
-		return this.heap.add(element);
+	    return this.heap.add(element);
 	}
 
 	/**
@@ -56,12 +56,12 @@ export default class PriorityQueue<T> {
 	 *  or undefined if this queue is empty.
 	 */
 	dequeue(): T | undefined {
-		if (this.heap.size() !== 0) {
-			const el = this.heap.peek();
-			this.heap.removeRoot();
-			return el;
-		}
-		return undefined;
+	    if (this.heap.size() !== 0) {
+	        const el = this.heap.peek();
+	        this.heap.removeRoot();
+	        return el;
+	    }
+	    return undefined;
 	}
 
 	/**
@@ -69,7 +69,7 @@ export default class PriorityQueue<T> {
 	 * @return {*} the highest priority element of this queue, or undefined if this queue is empty.
 	 */
 	peek(): T | undefined {
-		return this.heap.peek();
+	    return this.heap.peek();
 	}
 
 	/**
@@ -79,7 +79,7 @@ export default class PriorityQueue<T> {
 	 * false otherwise.
 	 */
 	contains(element: T): boolean {
-		return this.heap.contains(element);
+	    return this.heap.contains(element);
 	}
 
 	/**
@@ -88,7 +88,7 @@ export default class PriorityQueue<T> {
 	 * otherwise.
 	 */
 	isEmpty(): boolean {
-		return this.heap.isEmpty();
+	    return this.heap.isEmpty();
 	}
 
 	/**
@@ -96,14 +96,14 @@ export default class PriorityQueue<T> {
 	 * @return {number} the number of elements in this priority queue.
 	 */
 	size(): number {
-		return this.heap.size();
+	    return this.heap.size();
 	}
 
 	/**
 	 * Removes all of the elements from this priority queue.
 	 */
 	clear(): void {
-		this.heap.clear();
+	    this.heap.clear();
 	}
 
 	/**
@@ -114,6 +114,6 @@ export default class PriorityQueue<T> {
 	 * optionally return false.
 	 */
 	forEach(callback: util.ILoopFunction<T>) {
-		this.heap.forEach(callback);
+	    this.heap.forEach(callback);
 	}
 }

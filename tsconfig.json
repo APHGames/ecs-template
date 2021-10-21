@@ -1,18 +1,20 @@
 {
 	"compilerOptions": {
 		"target": "es2017",
+		"skipLibCheck": true,
 		"lib": [
 			"es6",
 			"dom"
 		],
 		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
 		"module": "esnext",
 		"outDir": "./build",
 		"downlevelIteration": true
 	},
 	"include": [
-		"./src/**/*",
-		"./libs/**/*"
+		"./src/**/*.ts",
+		"./libs/**/*.ts"
 	],
 	"exclude": [
 		"./node_modules",

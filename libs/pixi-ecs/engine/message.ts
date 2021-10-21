@@ -29,19 +29,19 @@ export class MessageResponses {
 	 * Gets data of the first response
 	 */
 	getData<T>(): T {
-		return (this.responses && this.responses.length > 0) ? this.responses[0].data as T : null;
+	    return (this.responses && this.responses.length > 0) ? this.responses[0].data as T : null;
 	}
 
 	isProcessed() {
-		return this.responses.length !== 0;
+	    return this.responses.length !== 0;
 	}
 
 	isSuccess() {
-		return !this.isError();
+	    return !this.isError();
 	}
 
 	isError() {
-		return this.responses.filter(r => r.error != null).length ? true : false;
+	    return this.responses.filter(r => r.error != null).length ? true : false;
 	}
 }
 
@@ -50,21 +50,6 @@ export class MessageResponses {
  */
 export default class Message {
 
-	/**
-	 * Action type identifier
-	 */
-	private _action: string = null;
-
-	/**
-	 * Component that sent this message
-	 */
-	private _component: Component<any> = null;
-
-	/**
-	 * GameObject attached to this message
-	 */
-	private _gameObject: Container = null;
-	
 	/**
 	 * Data payload
 	 */
@@ -80,24 +65,38 @@ export default class Message {
 	 */
 	responses: MessageResponses;
 
+	/**
+	 * Action type identifier
+	 */
+	private _action: string = null;
+
+	/**
+	 * Component that sent this message
+	 */
+	private _component: Component<any> = null;
+
+	/**
+	 * GameObject attached to this message
+	 */
+	private _gameObject: Container = null;
 
 	constructor(action: string, component?: Component<any>, gameObject?: Container, data?: any) {
-		this._action = action;
-		this._component = component;
-		this._gameObject = gameObject;
-		this.data = data;
-		this.responses = new MessageResponses();
+	    this._action = action;
+	    this._component = component;
+	    this._gameObject = gameObject;
+	    this.data = data;
+	    this.responses = new MessageResponses();
 	}
 
 	get action() {
-		return this._action;
+	    return this._action;
 	}
 
 	get component() {
-		return this._component;
+	    return this._component;
 	}
 
 	get gameObject() {
-		return this._gameObject;
+	    return this._gameObject;
 	}
 }
