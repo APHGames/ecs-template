@@ -595,8 +595,7 @@ export default class Builder {
 
 	    // now, when this object is already assigned to its parent, we can build children
 	    for (let child of this.children) {
-	        let newChild = child.withParent(<Container><any>object).process(clearData);
-	        object.pixiObj.addChild(newChild.pixiObj);
+	        child.withParent(<Container><any>object).process(clearData);
 	    }
 
 	    if (clearData) {
