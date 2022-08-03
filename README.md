@@ -1,4 +1,10 @@
-# APHGames template for PIXIJS and ECSLite library
+# Template for PIXIJS and ECSLite libraries
+
+## Gallery
+- all games that have been made by using this template can be found [here](https://aphgames.io/gallery) (search for the PIXI icon)
+
+## What is ECSLite
+- documentation of the ECSLite library that is a part of this repo can be found [here](https://aphgames.io/docs/learning/tutorials/ecsdocs)
 
 ## How to run this project
 - the project is powered by ParcelJS, TypeScript, PixiJS and ECSLite libraries
