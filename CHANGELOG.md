@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project/subject will be documented in this file.
 
+## [0.0.4] - 2023-09-26
+### Changed
+- Updated libraries
+
+
 ## [0.0.3] - 2021-10-31
 ### Changed
 - Fixed bug in ECSlite library (child builders)

@@ -1,7 +1,7 @@
 {
   "name": "aphgames-template",
   "author": "put your name here",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "scripts": {
     "dev": "node scripts/prebuild-project && parcel view/index.html --out-dir build",
